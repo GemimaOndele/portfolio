@@ -1,0 +1,88 @@
+Name: Gemima Ondele Pourou
+Current Program: MSc 1 Artificial Intelligence (current)
+Education Split:
+- Sem1 2025: MSc 1 Data Engineering (ECE Paris)
+- Sem2 2025 onward: MSc 1 Artificial Intelligence (ECE Paris, current)
+Target: AI internship (Apr 2026 - Sep 2026), with AI/Data opportunities as secondary scope
+
+LinkedIn:
+- URL: https://www.linkedin.com/in/gémima-ondele-pourou-1515251a7
+- Public webpage extraction unavailable in this environment
+- Source used: Profile linkedin.pdf
+- Extracted summary:
+  - Headline: Data and AI engineer. ML/DL and GenAI
+  - About: looking primarily for an AI internship from April (AI/Data as secondary scope)
+  - Main skills: fraud detection, AI/ML, AWS
+  - Additional email spotted: gemiondele@gmail.com
+
+GitHub:
+- URL: https://github.com/GemimaOndele/
+- Public repos: 28
+- Followers: 5
+- Following: 13
+- Notable repositories:
+  - Green-it-AI-audit-platform
+  - Healthpredict-AI
+  - MedPredict-IA
+  - Projet-Deep-Learning
+  - Projet-Integration-des-modeles-IA
+- Recent activity indicates strong commit cadence and project contributions
+
+Professional Experience:
+- ENGIE Solutions (Colombes) | Tools & Methods Engineering Apprentice | 10/2024 - 09/2025
+  - ETL/ELT and operational data workflows
+  - GMAO, SharePoint GED
+  - Python, VBA, PowerShell, Power Automate
+  - Dashboards and reporting with Power BI/Excel
+- Datasoft Consulting | Software/IT Intern | 07/2023 - 11/2024
+  - GED modules in TMA environment
+  - Java development and deployment
+  - Data collection/modeling and service digitization
+
+Projects:
+- HealthPredict AI
+  - Medical data collection, cleaning, and structuring
+  - ML and DL model training for event prediction
+  - Visualization with Matplotlib, Seaborn, Streamlit
+  - Deployment with Docker and GitHub Actions
+- Banking Fraud Detection (Deep Learning)
+  - Fraud detection using multi-layer neural networks
+  - Hyperparameter optimization with TensorFlow/Keras
+- Fake News Detection by AI
+  - FastAPI + Streamlit app
+  - Transformers (BERT), XGBoost, Random Forest
+  - REST API, user feedback loop, automated retraining
+  - Repo: github.com/GemimaOndele/Projet-Integration-des-modeles-IA
+
+Technical Skills:
+- Languages: Python, SQL, VBA, Java, PowerShell, PHP, JavaScript, C, R
+- AI/Data Science: Deep Learning, ML, NLP, TensorFlow, scikit-learn, LangChain, LLMs, Azure OpenAI
+- Tools: Power BI, Power Apps, Power Automate, FastAPI, Streamlit, Docker, GitHub, SharePoint
+- Methods: Prompt Engineering, RAG pipelines, OCR, ETL/ELT, feature engineering, data cleaning, CI/CD
+
+Education:
+- MSc 1 Data Engineering (Sem1 only), ECE Paris (09/2025 - 12/2025)
+- MSc 1 Artificial Intelligence (current), ECE Paris (01/2026 - 2027)
+- Bachelor Data & AI, ECE Paris (2022-2025)
+- General Engineering, EPF Troyes (2021-2022)
+
+Certifications:
+- AWS Academy Graduate: Machine Learning Foundations
+- AWS Academy Graduate: Cloud Foundations
+- AWS Academy Graduate: Data Architecture & Quality Management
+- DataScientest first exam
+- Examen Final - No Code - TechAway niv1 (FR)
+- Design Thinking (Fabb-Add Academie)
+
+Contacts:
+- Email: gemimakerenondelepourou@gmail.com
+- Secondary email: gemiondele@gmail.com
+- Phone: +33 6 62 38 32 01
+- GitHub: https://github.com/GemimaOndele/
+- LinkedIn: https://www.linkedin.com/in/gémima-ondele-pourou-1515251a7
+
+Cover letters analyzed:
+- LettreMotivation_Gemima_ENGIE_Design.docx
+- LettreMotivation_Gemima_ENGIE_StageDataScience.pdf
+- LettreMotivation_Gemima_Ondele_ENGIE_v2.docx
+- Modèle_Lettre de motivation.docx

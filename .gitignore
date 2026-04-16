@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local source documents (not website assets)
+/CV_Gemima_Ondele_ENGIE_Stage_DataScience.pdf
+/Profile linkedin.pdf
+/Mes CVs ( My CVs or Resume)/
+/Mes lettres de motivation (My cover letters)/

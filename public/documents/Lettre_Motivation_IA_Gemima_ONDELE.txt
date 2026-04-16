@@ -1,0 +1,20 @@
+Objet : Candidature stage IA - MSc 1 Artificial Intelligence
+
+Madame, Monsieur,
+
+Actuellement etudiante en MSc 1 Artificial Intelligence, je recherche un stage en IA a partir d'avril 2026.
+Mon parcours combine une base solide en Data Engineering et une specialisation en intelligence artificielle.
+
+Lors de mes experiences chez ENGIE Solutions et Datasift Consulting, j'ai travaille sur des flux ETL/ELT, l'automatisation
+de traitements (Python, PowerShell, VBA), la conception de dashboards KPI et la mise en production de modules applicatifs.
+Ces experiences m'ont permis de relier efficacement la technique aux besoins metier.
+
+En parallele, mes projets academiques et personnels portent sur le machine learning, le deep learning, le NLP et l'integration
+d'applications IA avec FastAPI et Streamlit. Je suis particulierement motivee par les sujets d'IA appliquee, d'automatisation
+intelligente et de systemes robustes.
+
+Je serais ravie d'echanger avec vous sur la maniere dont je peux contribuer rapidement a vos projets IA.
+
+Cordialement,
+Gemima Ondele
+gemimakerenondelepourou@gmail.com
