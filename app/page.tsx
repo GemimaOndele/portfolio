@@ -1398,15 +1398,18 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <h4 className="mt-8 text-sm font-semibold text-cyan-300">
+            {lang === "fr" ? "Images de projets" : "Project images"}
+          </h4>
+          <div className="mt-3 grid gap-4 md:grid-cols-2">
             {wixVisuals.map((item) => (
-              <div key={item.url} className={`overflow-hidden rounded-2xl border ${card}`}>
+              <div key={item.url} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
                 <Image
                   src={item.url}
                   alt="Projet issu du portfolio Wix"
                   width={1074}
                   height={504}
-                  className="h-52 w-full object-cover"
+                  className="h-auto w-full rounded-xl border border-white/10 bg-black/20 object-contain"
                   unoptimized
                 />
                 <div className="p-4">
