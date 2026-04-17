@@ -265,15 +265,6 @@ const projects = [
     link: "https://github.com/GemimaOndele/",
   },
   {
-    title: "Green IT AI Audit Platform",
-    fr: "Plateforme d'audit Green IT pour datacenters: calcul PUE/DCiE/CO2, recommandations IA explicables et simulation avant/apres avec objectif de -25% de CO2.",
-    en: "Green IT audit platform for data centers: PUE/DCiE/CO2 computation, explainable AI recommendations, and before/after simulation targeting -25% CO2.",
-    tags: ["Green IT", "PUE/DCiE/CO2", "Streamlit", "AI Audit", "Simulation"],
-    link: "https://github.com/GemimaOndele/Green-it-AI-audit-platform",
-    linkedin:
-      "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
-  },
-  {
     title: "CATIA V5 Mechanical Design Project",
     fr: "Modélisation et conception de pièces mécaniques sous CATIA V5 avec contraintes d'ingénierie et logique de validation.",
     en: "Mechanical part modeling and design in CATIA V5 with engineering constraints and validation logic.",
@@ -341,6 +332,19 @@ const wixVisuals = [
 ];
 
 const galleryVideos = [
+  {
+    titleFr: "GreenDC Audit Platform - video de demonstration",
+    titleEn: "GreenDC Audit Platform - demo video",
+    descFr:
+      "Projet Green IT d'audit datacenter: calcul PUE/DCiE/CO2, recommandations IA explicables, simulation avant/apres et objectif de reduction de 25% du CO2.",
+    descEn:
+      "Green IT data center audit project: PUE/DCiE/CO2 metrics, explainable AI recommendations, before/after simulation, and a 25% CO2 reduction target.",
+    github: "https://github.com/GemimaOndele/Green-it-AI-audit-platform",
+    linkedin:
+      "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
+    preview:
+      "https://raw.githubusercontent.com/GemimaOndele/Green-it-AI-audit-platform/main/docs/Frontend-Interface_screens/Part1.png",
+  },
   {
     src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
     titleFr: "Projet DevOps - plateforme de gestion de tickets IT",
@@ -1287,7 +1291,7 @@ export default function Home() {
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex font-semibold text-cyan-300">
                     GitHub ↗
                   </a>
-                  {"linkedin" in project ? (
+                  {"linkedin" in project && typeof project.linkedin === "string" ? (
                     <a
                       href={project.linkedin}
                       target="_blank"
@@ -1358,14 +1362,26 @@ export default function Home() {
           </h4>
           <div className="mt-3 grid gap-4 md:grid-cols-2">
             {galleryVideos.map((item) => (
-              <article key={item.src} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
-                <video
-                  controls
-                  preload="metadata"
-                  className="aspect-video h-64 w-full rounded-xl bg-black object-contain md:h-72"
-                >
-                  <source src={item.src} type="video/mp4" />
-                </video>
+              <article key={item.titleFr} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
+                {"src" in item ? (
+                  <video
+                    controls
+                    preload="metadata"
+                    className="aspect-video h-64 w-full rounded-xl bg-black object-contain md:h-72"
+                  >
+                    <source src={item.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <div className="aspect-video h-64 w-full overflow-hidden rounded-xl border border-white/10 bg-black/20 md:h-72">
+                    {"preview" in item ? (
+                      <img
+                        src={item.preview}
+                        alt={lang === "fr" ? item.titleFr : item.titleEn}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : null}
+                  </div>
+                )}
                 <h5 className="mt-3 text-sm font-semibold">
                   {lang === "fr" ? item.titleFr : item.titleEn}
                 </h5>
@@ -1381,7 +1397,7 @@ export default function Home() {
                   >
                     GitHub ↗
                   </a>
-                  {"linkedin" in item ? (
+                  {"linkedin" in item && typeof item.linkedin === "string" ? (
                     <a
                       href={item.linkedin}
                       target="_blank"
