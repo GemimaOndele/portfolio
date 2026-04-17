@@ -340,13 +340,6 @@ const wixVisuals = [
 
 const galleryVideos = [
   {
-    src: "/bg-ai.mp4",
-    titleFr: "Video initiale IA/robotique",
-    titleEn: "Initial AI/robotics video",
-    descFr: "Video d'origine du portfolio, remise dans la galerie (sans affichage en fond d'ecran).",
-    descEn: "Original portfolio video restored in the gallery (not as a full-page background).",
-  },
-  {
     src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
     titleFr: "Projet DevOps - video de demonstration",
     titleEn: "DevOps project - demo video",
@@ -1018,6 +1011,16 @@ export default function Home() {
         }
       }}
     >
+      <video
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source src="/bg-ai.mp4" type="video/mp4" />
+      </video>
       <div className={`fixed inset-0 z-[1] ${isLight ? "bg-slate-100/84" : "bg-[#05070d]/80"}`} />
       {preset === "showcase" ? (
         <div className="pointer-events-none fixed inset-0 z-[1]">
