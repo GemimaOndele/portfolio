@@ -338,6 +338,23 @@ const wixVisuals = [
   },
 ];
 
+const galleryVideos = [
+  {
+    src: "/bg-ai.mp4",
+    titleFr: "Video initiale IA/robotique",
+    titleEn: "Initial AI/robotics video",
+    descFr: "Video d'origine du portfolio, remise dans la galerie (sans affichage en fond d'ecran).",
+    descEn: "Original portfolio video restored in the gallery (not as a full-page background).",
+  },
+  {
+    src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
+    titleFr: "Projet DevOps - video de demonstration",
+    titleEn: "DevOps project - demo video",
+    descFr: "Demonstration du projet DevOps, conservee au format original pour eviter tout etirement.",
+    descEn: "DevOps project demo displayed with original ratio to avoid stretching.",
+  },
+] as const;
+
 const wixPages = [
   {
     title: "Accueil",
@@ -491,8 +508,6 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("fr");
   const [theme, setTheme] = useState<Theme>("dark");
   const [track] = useState<Track>("ai-engineer");
-  const [soundEnabled, setSoundEnabled] = useState(false);
-  const [soundVolume, setSoundVolume] = useState(78);
   const [chatOpen, setChatOpen] = useState(true);
   const [chatMode, setChatMode] = useState<ChatMode>("standard");
   const [assistantTone, setAssistantTone] = useState<AssistantTone>("pro");
@@ -505,7 +520,6 @@ export default function Home() {
   const [speechReady, setSpeechReady] = useState(false);
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [manualFrVoiceUri, setManualFrVoiceUri] = useState("auto");
-  const [videoIntensity, setVideoIntensity] = useState(70);
   const [preset] = useState<Preset>("showcase");
   const [actionEmojis, setActionEmojis] = useState<ActionEmoji[]>([]);
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>(() => {
@@ -517,7 +531,6 @@ export default function Home() {
       },
     ];
   });
-  const videoRef = useRef<HTMLVideoElement>(null);
   const recognitionRef = useRef<SpeechRecognizer | null>(null);
   const orbitLargeRef = useRef<HTMLDivElement>(null);
   const orbitSmallRef = useRef<HTMLDivElement>(null);
@@ -532,32 +545,6 @@ export default function Home() {
     () => availableVoices.filter((voice) => voice.lang.toLowerCase().startsWith("fr")),
     [availableVoices]
   );
-  const videoOpacityClass =
-    videoIntensity <= 40
-      ? "opacity-40"
-      : videoIntensity <= 50
-        ? "opacity-50"
-        : videoIntensity <= 60
-          ? "opacity-60"
-          : videoIntensity <= 70
-            ? "opacity-70"
-            : videoIntensity <= 80
-              ? "opacity-80"
-              : "opacity-90";
-
-  const overlayClass =
-    videoIntensity <= 40
-      ? isLight
-        ? "bg-slate-200/94"
-        : "bg-[#05070d]/72"
-      : videoIntensity <= 60
-        ? isLight
-          ? "bg-slate-200/90"
-          : "bg-[#05070d]/60"
-        : isLight
-          ? "bg-slate-200/86"
-          : "bg-[#05070d]/50";
-
   const card = useMemo(
     () =>
       preset === "interview"
@@ -580,29 +567,6 @@ export default function Home() {
     window.setTimeout(() => {
       setActionEmojis((prev) => prev.filter((e) => !burst.some((b) => b.id === e.id)));
     }, 1700);
-  };
-
-  const toggleAmbientSound = async () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (soundEnabled) {
-      video.muted = true;
-      video.volume = 0;
-      setSoundEnabled(false);
-      launchEmojiBurst(["🔇", "🌙"]);
-      return;
-    }
-    try {
-      video.muted = false;
-      video.volume = Math.min(1, Math.max(0.25, soundVolume / 100));
-      await video.play();
-      setSoundEnabled(true);
-      launchEmojiBurst(["🎵", "🤖", "✨"]);
-    } catch {
-      video.muted = true;
-      video.volume = 0;
-      setSoundEnabled(false);
-    }
   };
 
   const pickOne = (options: string[]) => options[Math.floor(Math.random() * options.length)];
@@ -867,21 +831,12 @@ export default function Home() {
     }
     utterance.onstart = () => {
       setBotSpeaking(true);
-      if (videoRef.current && soundEnabled) {
-        videoRef.current.volume = Math.max(0.05, (soundVolume / 100) * 0.22);
-      }
     };
     utterance.onend = () => {
       setBotSpeaking(false);
-      if (videoRef.current && soundEnabled) {
-        videoRef.current.volume = Math.min(1, Math.max(0.25, soundVolume / 100));
-      }
     };
     utterance.onerror = () => {
       setBotSpeaking(false);
-      if (videoRef.current && soundEnabled) {
-        videoRef.current.volume = Math.min(1, Math.max(0.25, soundVolume / 100));
-      }
     };
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
@@ -1048,30 +1003,6 @@ export default function Home() {
     }
   }, [lang]);
 
-  useEffect(() => {
-    if (!videoRef.current || !soundEnabled) return;
-    videoRef.current.volume = Math.min(1, Math.max(0.25, soundVolume / 100));
-  }, [soundVolume]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.volume = 0;
-    void video.play().catch(() => {
-      // Autoplay may be blocked until user interaction.
-    });
-  }, []);
-
-  useEffect(() => {
-    const videoNode = videoRef.current;
-    return () => {
-      if (videoNode) {
-        videoNode.pause();
-      }
-    };
-  }, []);
-
   return (
     <div
       className={`relative min-h-screen overflow-x-hidden ${isLight ? "bg-slate-100" : "bg-[#05070d]"} transition-colors duration-500`}
@@ -1087,18 +1018,7 @@ export default function Home() {
         }
       }}
     >
-      <video
-        ref={videoRef}
-        className={`pointer-events-none fixed inset-0 z-0 h-full w-full object-cover ${preset === "showcase" ? videoOpacityClass : isLight ? "opacity-16" : "opacity-40"}`}
-        autoPlay
-        muted={!soundEnabled}
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source src="/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4" type="video/mp4" />
-      </video>
-      <div className={`fixed inset-0 z-[1] ${preset === "showcase" ? overlayClass : isLight ? "bg-slate-100/84" : "bg-[#05070d]/80"}`} />
+      <div className={`fixed inset-0 z-[1] ${isLight ? "bg-slate-100/84" : "bg-[#05070d]/80"}`} />
       {preset === "showcase" ? (
         <div className="pointer-events-none fixed inset-0 z-[1]">
           {Array.from({ length: 10 }).map((_, i) => (
@@ -1240,13 +1160,6 @@ export default function Home() {
               </button>
               <button
                 type="button"
-                onClick={toggleAmbientSound}
-                className="rounded-full border border-cyan-300/60 px-3 py-1 font-semibold text-cyan-300"
-              >
-                {soundEnabled ? t.soundOff : t.soundOn}
-              </button>
-              <button
-                type="button"
                 onClick={() => {
                   setVoiceEnabled((p) => !p);
                   launchEmojiBurst(["🎙️", "🤖"]);
@@ -1256,32 +1169,6 @@ export default function Home() {
                 {voiceEnabled ? t.voiceOn : t.voiceOff}
               </button>
             </div>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
-            <span>{lang === "fr" ? "Intensite du fond video" : "Video background intensity"}</span>
-            <input
-              type="range"
-              min={40}
-              max={90}
-              step={10}
-              value={videoIntensity}
-              onChange={(e) => setVideoIntensity(Number(e.target.value))}
-              aria-label="Intensite du fond video"
-              className="w-40 accent-cyan-300"
-            />
-            <span className="text-cyan-300">{videoIntensity}%</span>
-            <span>{lang === "fr" ? "Volume du son video" : "Video volume"}</span>
-            <input
-              type="range"
-              min={55}
-              max={100}
-              step={5}
-              value={soundVolume}
-              onChange={(e) => setSoundVolume(Number(e.target.value))}
-              aria-label={lang === "fr" ? "Volume du son video" : "Video volume"}
-              className="w-32 accent-emerald-300"
-            />
-            <span className="text-emerald-300">{soundVolume}%</span>
           </div>
         </header>
 
@@ -1434,6 +1321,28 @@ export default function Home() {
           </div>
 
           <h3 className="mt-8 text-xl font-semibold">{t.galleryTitle}</h3>
+          <h4 className="mt-4 text-sm font-semibold text-cyan-300">
+            {lang === "fr" ? "Videos de demonstration" : "Demo videos"}
+          </h4>
+          <div className="mt-3 grid gap-4 md:grid-cols-2">
+            {galleryVideos.map((item) => (
+              <article key={item.src} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
+                <video
+                  controls
+                  preload="metadata"
+                  className="aspect-video h-64 w-full rounded-xl bg-black object-contain md:h-72"
+                >
+                  <source src={item.src} type="video/mp4" />
+                </video>
+                <h5 className="mt-3 text-sm font-semibold">
+                  {lang === "fr" ? item.titleFr : item.titleEn}
+                </h5>
+                <p className="mt-2 text-xs leading-5">
+                  {lang === "fr" ? item.descFr : item.descEn}
+                </p>
+              </article>
+            ))}
+          </div>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             {wixVisuals.map((item) => (
               <div key={item.url} className={`overflow-hidden rounded-2xl border ${card}`}>
