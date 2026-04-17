@@ -333,6 +333,7 @@ const wixVisuals = [
 
 const galleryVideos = [
   {
+    src: "/greenit-demo-linkedin.mp4",
     titleFr: "GreenDC Audit Platform - video de demonstration",
     titleEn: "GreenDC Audit Platform - demo video",
     descFr:
@@ -342,8 +343,6 @@ const galleryVideos = [
     github: "https://github.com/GemimaOndele/Green-it-AI-audit-platform",
     linkedin:
       "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
-    preview:
-      "https://raw.githubusercontent.com/GemimaOndele/Green-it-AI-audit-platform/main/docs/Frontend-Interface_screens/Part1.png",
   },
   {
     src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
@@ -1363,25 +1362,13 @@ export default function Home() {
           <div className="mt-3 grid gap-4 md:grid-cols-2">
             {galleryVideos.map((item) => (
               <article key={item.titleFr} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
-                {"src" in item ? (
-                  <video
-                    controls
-                    preload="metadata"
-                    className="aspect-video h-64 w-full rounded-xl bg-black object-contain md:h-72"
-                  >
-                    <source src={item.src} type="video/mp4" />
-                  </video>
-                ) : (
-                  <div className="aspect-video h-64 w-full overflow-hidden rounded-xl border border-white/10 bg-black/20 md:h-72">
-                    {"preview" in item ? (
-                      <img
-                        src={item.preview}
-                        alt={lang === "fr" ? item.titleFr : item.titleEn}
-                        className="h-full w-full object-cover"
-                      />
-                    ) : null}
-                  </div>
-                )}
+                <video
+                  controls
+                  preload="metadata"
+                  className="aspect-video h-64 w-full rounded-xl bg-black object-contain md:h-72"
+                >
+                  <source src={item.src} type="video/mp4" />
+                </video>
                 <h5 className="mt-3 text-sm font-semibold">
                   {lang === "fr" ? item.titleFr : item.titleEn}
                 </h5>
