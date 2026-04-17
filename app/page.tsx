@@ -341,10 +341,12 @@ const wixVisuals = [
 const galleryVideos = [
   {
     src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
-    titleFr: "Projet DevOps - video de demonstration",
-    titleEn: "DevOps project - demo video",
-    descFr: "Demonstration du projet DevOps, conservee au format original pour eviter tout etirement.",
-    descEn: "DevOps project demo displayed with original ratio to avoid stretching.",
+    titleFr: "Projet DevOps - plateforme de gestion de tickets IT",
+    titleEn: "DevOps project - IT ticket management platform",
+    descFr:
+      "Demonstration d'une plateforme de tickets IT construite en approche DevOps (Docker, Docker Compose, Jenkins, CI/CD), avec une architecture complete backend/frontend/infrastructure et des roles employes, techniciens et admins.",
+    descEn:
+      "Demo of an IT ticketing platform built with a full DevOps approach (Docker, Docker Compose, Jenkins, CI/CD), including a complete backend/frontend/infrastructure architecture and employee, technician, and admin roles.",
   },
 ] as const;
 
