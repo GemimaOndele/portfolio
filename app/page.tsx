@@ -1096,7 +1096,7 @@ export default function Home() {
         playsInline
         preload="auto"
       >
-        <source src="/bg-ai.mp4" type="video/mp4" />
+        <source src="/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4" type="video/mp4" />
       </video>
       <div className={`fixed inset-0 z-[1] ${preset === "showcase" ? overlayClass : isLight ? "bg-slate-100/84" : "bg-[#05070d]/80"}`} />
       {preset === "showcase" ? (
