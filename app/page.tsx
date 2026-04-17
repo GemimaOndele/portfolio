@@ -266,10 +266,12 @@ const projects = [
   },
   {
     title: "Green IT AI Audit Platform",
-    fr: "Plateforme pour auditer l'impact environnemental des charges IA.",
-    en: "Platform to assess environmental impact of AI workloads.",
-    tags: ["Sustainability", "AI Audit", "Python"],
+    fr: "Plateforme d'audit Green IT pour datacenters: calcul PUE/DCiE/CO2, recommandations IA explicables et simulation avant/apres avec objectif de -25% de CO2.",
+    en: "Green IT audit platform for data centers: PUE/DCiE/CO2 computation, explainable AI recommendations, and before/after simulation targeting -25% CO2.",
+    tags: ["Green IT", "PUE/DCiE/CO2", "Streamlit", "AI Audit", "Simulation"],
     link: "https://github.com/GemimaOndele/Green-it-AI-audit-platform",
+    linkedin:
+      "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
   },
   {
     title: "CATIA V5 Mechanical Design Project",
@@ -347,6 +349,19 @@ const galleryVideos = [
       "Demonstration d'une plateforme de tickets IT construite en approche DevOps (Docker, Docker Compose, Jenkins, CI/CD), avec une architecture complete backend/frontend/infrastructure et des roles employes, techniciens et admins.",
     descEn:
       "Demo of an IT ticketing platform built with a full DevOps approach (Docker, Docker Compose, Jenkins, CI/CD), including a complete backend/frontend/infrastructure architecture and employee, technician, and admin roles.",
+    github: "https://github.com/GemimaOndele/Projet-DEVOPS",
+  },
+  {
+    src: "/cyber-attack-simulation-compressed.mp4",
+    titleFr: "2ASICYA - simulation de cyberattaque sur onduleurs solaires",
+    titleEn: "2ASICYA - solar inverter cyberattack simulation",
+    descFr:
+      "Recap video d'un projet MSc de cybersécurité Smart Grid: simulation pandapower des scénarios S1-S5, analyse de risques cyber-physiques, dashboard analytique et visualisation 3D temps réel de type digital twin.",
+    descEn:
+      "Video recap of an MSc Smart Grid cybersecurity project: pandapower simulation of S1-S5 scenarios, cyber-physical risk analysis, analytics dashboard, and real-time 3D digital-twin style visualization.",
+    github: "https://github.com/Dauemi/inverter-cyberattack-simulation",
+    linkedin:
+      "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_cybersecurity-smartgrid-powersystems-activity-7450617998295535616-onLg?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
   },
 ] as const;
 
@@ -1268,9 +1283,21 @@ export default function Home() {
                     <span key={tag} className="rounded-full border border-white/20 px-2 py-1 text-xs">{tag}</span>
                   ))}
                 </div>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-sm font-semibold text-cyan-300">
-                  GitHub ↗
-                </a>
+                <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex font-semibold text-cyan-300">
+                    GitHub ↗
+                  </a>
+                  {"linkedin" in project ? (
+                    <a
+                      href={project.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex font-semibold text-violet-300"
+                    >
+                      LinkedIn ↗
+                    </a>
+                  ) : null}
+                </div>
               </article>
             ))}
           </div>
@@ -1345,6 +1372,26 @@ export default function Home() {
                 <p className="mt-2 text-xs leading-5">
                   {lang === "fr" ? item.descFr : item.descEn}
                 </p>
+                <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                  <a
+                    href={item.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex font-semibold text-cyan-300"
+                  >
+                    GitHub ↗
+                  </a>
+                  {"linkedin" in item ? (
+                    <a
+                      href={item.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex font-semibold text-violet-300"
+                    >
+                      LinkedIn ↗
+                    </a>
+                  ) : null}
+                </div>
               </article>
             ))}
           </div>
