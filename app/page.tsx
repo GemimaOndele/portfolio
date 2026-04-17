@@ -345,19 +345,9 @@ const galleryVideos = [
       "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
   },
   {
-    src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
-    titleFr: "Projet DevOps - plateforme de gestion de tickets IT",
-    titleEn: "DevOps project - IT ticket management platform",
-    descFr:
-      "Demonstration d'une plateforme de tickets IT construite en approche DevOps (Docker, Docker Compose, Jenkins, CI/CD), avec une architecture complete backend/frontend/infrastructure et des roles employes, techniciens et admins.",
-    descEn:
-      "Demo of an IT ticketing platform built with a full DevOps approach (Docker, Docker Compose, Jenkins, CI/CD), including a complete backend/frontend/infrastructure architecture and employee, technician, and admin roles.",
-    github: "https://github.com/GemimaOndele/Projet-DEVOPS",
-  },
-  {
     src: "/cyber-attack-simulation-compressed.mp4",
-    titleFr: "2ASICYA - simulation de cyberattaque sur onduleurs solaires",
-    titleEn: "2ASICYA - solar inverter cyberattack simulation",
+    titleFr: "2ASICYA - video de demonstration",
+    titleEn: "2ASICYA - demo video",
     descFr:
       "Recap video d'un projet MSc de cybersécurité Smart Grid: simulation pandapower des scénarios S1-S5, analyse de risques cyber-physiques, dashboard analytique et visualisation 3D temps réel de type digital twin.",
     descEn:
@@ -365,6 +355,16 @@ const galleryVideos = [
     github: "https://github.com/Dauemi/inverter-cyberattack-simulation",
     linkedin:
       "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_cybersecurity-smartgrid-powersystems-activity-7450617998295535616-onLg?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
+  },
+  {
+    src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
+    titleFr: "Projet DevOps - video de demonstration",
+    titleEn: "DevOps project - demo video",
+    descFr:
+      "Demonstration d'une plateforme de tickets IT construite en approche DevOps (Docker, Docker Compose, Jenkins, CI/CD), avec une architecture complete backend/frontend/infrastructure et des roles employes, techniciens et admins.",
+    descEn:
+      "Demo of an IT ticketing platform built with a full DevOps approach (Docker, Docker Compose, Jenkins, CI/CD), including a complete backend/frontend/infrastructure architecture and employee, technician, and admin roles.",
+    github: "https://github.com/GemimaOndele/Projet-DEVOPS",
   },
 ] as const;
 
