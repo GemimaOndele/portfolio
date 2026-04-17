@@ -1451,20 +1451,20 @@ export default function Home() {
         <section id="contact" className={`mb-6 rounded-3xl border p-8 text-center ${card}`}>
           <h2 className="text-2xl font-semibold md:text-3xl">{t.contactTitle}</h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm">{t.contactText}</p>
-          <p className="mt-3 text-sm">gemimakerenondelepourou@gmail.com | +33 6 62 38 32 01</p>
+          <p className="mt-3 text-sm">gemimakerenondelepourou@gmail.com</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
             <a href="mailto:gemimakerenondelepourou@gmail.com" className="rounded-full bg-cyan-300 px-4 py-2 font-semibold text-[#052029]">Email</a>
             <a href="https://github.com/GemimaOndele/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/30 px-4 py-2 font-semibold">GitHub</a>
             <a href="https://www.linkedin.com/in/g%C3%A9mima-ondele-pourou-1515251a7" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/30 px-4 py-2 font-semibold">LinkedIn</a>
           </div>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm">
-            <a href="/documents/CV_Gemima_Ondele_ENGIE_Stage_DataScience.pdf" download className="rounded-full border border-cyan-300/60 px-4 py-2 font-semibold text-cyan-200">
+            <a href="/documents/CV_Gemima_Ondele_Data_AI_Robotique_2026.pdf" download className="rounded-full border border-cyan-300/60 px-4 py-2 font-semibold text-cyan-200">
               {t.cvDownload}
             </a>
-            <a href="/documents/Lettre_Motivation_IA_Gemima_ONDELE.txt" download className="rounded-full border border-emerald-300/60 px-4 py-2 font-semibold text-emerald-200">
+            <a href="/documents/Lettre_Motivation_IA_Gemima_ONDELE.pdf" download className="rounded-full border border-emerald-300/60 px-4 py-2 font-semibold text-emerald-200">
               {t.letterAiDownload}
             </a>
-            <a href="/documents/Lettre_Motivation_Neutre_Gemima_ONDELE.txt" download className="rounded-full border border-violet-300/60 px-4 py-2 font-semibold text-violet-200">
+            <a href="/documents/Lettre_Motivation_Neutre_Gemima_ONDELE.pdf" download className="rounded-full border border-violet-300/60 px-4 py-2 font-semibold text-violet-200">
               {t.letterNeutralDownload}
             </a>
           </div>
