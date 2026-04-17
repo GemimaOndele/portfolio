@@ -521,7 +521,7 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("fr");
   const [theme, setTheme] = useState<Theme>("dark");
   const [track] = useState<Track>("ai-engineer");
-  const [chatOpen, setChatOpen] = useState(true);
+  const [chatOpen, setChatOpen] = useState(false);
   const [chatMode, setChatMode] = useState<ChatMode>("standard");
   const [assistantTone, setAssistantTone] = useState<AssistantTone>("pro");
   const [micListening, setMicListening] = useState(false);
