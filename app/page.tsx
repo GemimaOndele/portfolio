@@ -13,6 +13,7 @@ type Preset = "interview" | "showcase";
 type VoiceStyle = "natural" | "interview";
 type AssistantTone = "pro" | "fun";
 type ActionEmoji = { id: number; emoji: string; left: number; delay: number };
+type ProjectCategory = "all" | "ai" | "devops" | "cyber" | "web" | "data";
 type SpeechRecognitionResultLike = { results: ArrayLike<ArrayLike<{ transcript: string }>> };
 type SpeechRecognizer = {
   lang: string;
@@ -99,6 +100,11 @@ const copy = {
     voiceDebug: "Voix active",
     voiceFrSelect: "Voix FR",
     voiceAuto: "Auto (meilleure)",
+    bgMusicOn: "Musique IA ON",
+    bgMusicOff: "Musique IA OFF",
+    projectFilter: "Filtrer les projets",
+    galleryFilter: "Filtrer les demos",
+    robotMoodLabel: "Humeur",
   },
   en: {
     nav: ["About", "Education", "Experience", "Projects", "Achievements", "Skills", "Vision", "Contact"],
@@ -164,6 +170,11 @@ const copy = {
     voiceDebug: "Active voice",
     voiceFrSelect: "FR voice",
     voiceAuto: "Auto (best)",
+    bgMusicOn: "AI music ON",
+    bgMusicOff: "AI music OFF",
+    projectFilter: "Filter projects",
+    galleryFilter: "Filter demos",
+    robotMoodLabel: "Mood",
   },
 } as const;
 
@@ -249,6 +260,7 @@ const projects = [
     en: "Medical incident prediction (NLP, OCR, ML/DL) with Streamlit visualizations.",
     tags: ["Python", "NLP", "OCR", "ML/DL"],
     link: "https://github.com/GemimaOndele/Healthpredict-AI",
+    category: "ai" as ProjectCategory,
   },
   {
     title: "Fake News Detection",
@@ -256,6 +268,7 @@ const projects = [
     en: "FastAPI + Streamlit app with BERT, XGBoost, Random Forest, and retraining loop.",
     tags: ["FastAPI", "Transformers", "BERT", "MLOps"],
     link: "https://github.com/GemimaOndele/Projet-Integration-des-modeles-IA",
+    category: "ai" as ProjectCategory,
   },
   {
     title: "Multi-sector Data Strategy",
@@ -263,6 +276,7 @@ const projects = [
     en: "KPI and decision-support data case applicable to energy, healthcare, finance, and services.",
     tags: ["KPI", "Analytics", "Data Strategy", "Business"],
     link: "https://github.com/GemimaOndele/",
+    category: "data" as ProjectCategory,
   },
   {
     title: "CATIA V5 Mechanical Design Project",
@@ -270,6 +284,7 @@ const projects = [
     en: "Mechanical part modeling and design in CATIA V5 with engineering constraints and validation logic.",
     tags: ["CATIA V5", "Mechanical Design", "Engineering"],
     link: "https://gemimaondelepourou.wixsite.com/portfolio-de-gemima/about-9",
+    category: "data" as ProjectCategory,
   },
   {
     title: "Network & Systems Engineering Labs",
@@ -277,6 +292,7 @@ const projects = [
     en: "Network/systems labs: OSI layers, Ethernet/IP protocols, high availability, Linux and environment administration.",
     tags: ["Network", "Systems", "Linux", "Engineering"],
     link: "https://gemimaondelepourou.wixsite.com/portfolio-de-gemima/about-9",
+    category: "cyber" as ProjectCategory,
   },
   {
     title: "Web Development Foundation",
@@ -284,6 +300,7 @@ const projects = [
     en: "Web foundation projects in HTML/CSS/JavaScript/PHP (museum site, mini apps) from digital engineering core curriculum.",
     tags: ["Web Dev", "HTML/CSS", "JavaScript", "PHP"],
     link: "https://gemimaondelepourou.wixsite.com/portfolio-de-gemima/about-9",
+    category: "web" as ProjectCategory,
   },
 ];
 
@@ -343,6 +360,7 @@ const galleryVideos = [
     github: "https://github.com/GemimaOndele/Green-it-AI-audit-platform",
     linkedin:
       "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_greenit-sustainableenergy-ai-activity-7446980264335036416-wciW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
+    category: "ai" as ProjectCategory,
   },
   {
     src: "/cyber-attack-simulation-compressed.mp4",
@@ -355,6 +373,7 @@ const galleryVideos = [
     github: "https://github.com/Dauemi/inverter-cyberattack-simulation",
     linkedin:
       "https://www.linkedin.com/posts/g%C3%A9mima-ondele-pourou-1515251a7_cybersecurity-smartgrid-powersystems-activity-7450617998295535616-onLg?utm_source=share&utm_medium=member_desktop&rcm=ACoAADBPMI0BHfxYtY5d7Mhi3YegOZzcBIkXEaE",
+    category: "cyber" as ProjectCategory,
   },
   {
     src: "/Projet%20Devops%20d%C3%A9mo%20vid%C3%A9o.mp4",
@@ -365,6 +384,7 @@ const galleryVideos = [
     descEn:
       "Demo of an IT ticketing platform built with a full DevOps approach (Docker, Docker Compose, Jenkins, CI/CD), including a complete backend/frontend/infrastructure architecture and employee, technician, and admin roles.",
     github: "https://github.com/GemimaOndele/Projet-DEVOPS",
+    category: "devops" as ProjectCategory,
   },
 ] as const;
 
@@ -535,6 +555,10 @@ export default function Home() {
   const [manualFrVoiceUri, setManualFrVoiceUri] = useState("auto");
   const [preset] = useState<Preset>("showcase");
   const [actionEmojis, setActionEmojis] = useState<ActionEmoji[]>([]);
+  const [robotMood, setRobotMood] = useState("🙂");
+  const [ambientMusicOn, setAmbientMusicOn] = useState(false);
+  const [selectedProjectCategory, setSelectedProjectCategory] = useState<ProjectCategory>("all");
+  const [selectedGalleryCategory, setSelectedGalleryCategory] = useState<ProjectCategory>("all");
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>(() => {
     return [
       {
@@ -547,6 +571,14 @@ export default function Home() {
   const recognitionRef = useRef<SpeechRecognizer | null>(null);
   const orbitLargeRef = useRef<HTMLDivElement>(null);
   const orbitSmallRef = useRef<HTMLDivElement>(null);
+  const ambientCtxRef = useRef<AudioContext | null>(null);
+  const ambientNodesRef = useRef<{
+    oscA: OscillatorNode;
+    oscB: OscillatorNode;
+    lfo: OscillatorNode;
+    lfoGain: GainNode;
+    mix: GainNode;
+  } | null>(null);
   const emojiSeqRef = useRef(1);
   const t = copy[lang];
   const isLight = theme === "light";
@@ -569,6 +601,46 @@ export default function Home() {
           : "border-white/10 bg-black/35 text-zinc-100",
     [isLight, preset]
   );
+  const categoryLabels = {
+    fr: {
+      all: "Tous",
+      ai: "IA",
+      devops: "DevOps",
+      cyber: "Cybersécurité",
+      web: "Web",
+      data: "Data",
+    },
+    en: {
+      all: "All",
+      ai: "AI",
+      devops: "DevOps",
+      cyber: "Cybersecurity",
+      web: "Web",
+      data: "Data",
+    },
+  } as const;
+  const projectCategoryOptions = useMemo(
+    () => ["all", ...Array.from(new Set(projects.map((p) => p.category)))] as ProjectCategory[],
+    []
+  );
+  const galleryCategoryOptions = useMemo(
+    () => ["all", ...Array.from(new Set(galleryVideos.map((p) => p.category)))] as ProjectCategory[],
+    []
+  );
+  const filteredProjects = useMemo(
+    () =>
+      selectedProjectCategory === "all"
+        ? projects
+        : projects.filter((project) => project.category === selectedProjectCategory),
+    [selectedProjectCategory]
+  );
+  const filteredGalleryVideos = useMemo(
+    () =>
+      selectedGalleryCategory === "all"
+        ? galleryVideos
+        : galleryVideos.filter((item) => item.category === selectedGalleryCategory),
+    [selectedGalleryCategory]
+  );
   const launchEmojiBurst = (emojiSet: string[]) => {
     const burst: ActionEmoji[] = Array.from({ length: 8 }).map((_, i) => ({
       id: emojiSeqRef.current++,
@@ -580,6 +652,73 @@ export default function Home() {
     window.setTimeout(() => {
       setActionEmojis((prev) => prev.filter((e) => !burst.some((b) => b.id === e.id)));
     }, 1700);
+  };
+  const inferRobotMood = (text: string) => {
+    const q = text.toLowerCase();
+    if (/(blague|joke|funny|lol|haha)/.test(q)) return "😄";
+    if (/(merci|thanks|great|bravo|super)/.test(q)) return "😊";
+    if (/(stage|internship|job|projet|project)/.test(q)) return "🤓";
+    if (/(robot|ia|ai|cyber|devops)/.test(q)) return "🤖";
+    return "🙂";
+  };
+  const startAmbientMusic = async () => {
+    if (typeof window === "undefined") return;
+    if (!ambientCtxRef.current) {
+      ambientCtxRef.current = new window.AudioContext();
+    }
+    const ctx = ambientCtxRef.current;
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
+    if (!ambientNodesRef.current) {
+      const oscA = ctx.createOscillator();
+      const oscB = ctx.createOscillator();
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      const mix = ctx.createGain();
+
+      oscA.type = "sine";
+      oscA.frequency.value = 96;
+      oscB.type = "triangle";
+      oscB.frequency.value = 144;
+      lfo.type = "sine";
+      lfo.frequency.value = 0.18;
+      lfoGain.gain.value = 16;
+      mix.gain.value = 0.018;
+
+      lfo.connect(lfoGain);
+      lfoGain.connect(oscA.frequency);
+      lfoGain.connect(oscB.frequency);
+      oscA.connect(mix);
+      oscB.connect(mix);
+      mix.connect(ctx.destination);
+
+      oscA.start();
+      oscB.start();
+      lfo.start();
+      ambientNodesRef.current = { oscA, oscB, lfo, lfoGain, mix };
+    }
+  };
+  const stopAmbientMusic = async () => {
+    const nodes = ambientNodesRef.current;
+    if (!nodes) return;
+    const { oscA, oscB, lfo, lfoGain, mix } = nodes;
+    try {
+      oscA.stop();
+      oscB.stop();
+      lfo.stop();
+    } catch {
+      // no-op when already stopped
+    }
+    oscA.disconnect();
+    oscB.disconnect();
+    lfo.disconnect();
+    lfoGain.disconnect();
+    mix.disconnect();
+    ambientNodesRef.current = null;
+    if (ambientCtxRef.current && ambientCtxRef.current.state !== "closed") {
+      await ambientCtxRef.current.suspend();
+    }
   };
 
   const pickOne = (options: string[]) => options[Math.floor(Math.random() * options.length)];
@@ -720,12 +859,14 @@ export default function Home() {
   const processUserQuestion = (rawText: string) => {
     const text = rawText.trim();
     if (!text) return;
+    setRobotMood(inferRobotMood(text));
     const recentContext = chatMessages.slice(-10);
     setChatMessages((prev) => [...prev, { role: "user", text }]);
     setIsTyping(true);
     const answer = generateAssistantReply(text, recentContext);
     window.setTimeout(() => {
       setChatMessages((prev) => [...prev, { role: "bot", text: answer }]);
+      setRobotMood(inferRobotMood(answer));
       setIsTyping(false);
       speakText(answer);
     }, 450);
@@ -810,10 +951,11 @@ export default function Home() {
       return;
     }
     const normalized = text
-      .replace(/\bDatasift\b/gi, "Data Soft")
-      .replace(/\bDatasoft\b/gi, "Data Soft")
-      .replace(/\bDatassoft\b/gi, "Data Soft")
-      .replace(/\bDatazoft\b/gi, "Data Soft")
+      .replace(/\bDatasift\b/gi, "Datasoft")
+      .replace(/\bData Soft\b/gi, "Datasoft")
+      .replace(/\bDatasoft\b/gi, "Datasoft")
+      .replace(/\bDatassoft\b/gi, "Datasoft")
+      .replace(/\bDatazoft\b/gi, "Datasoft")
       .replace(/\bIA\b/g, "I A")
       .replace(/\bAI\b/g, "A I")
       .replace(/\bETL\/ELT\b/g, "E T L, E L T")
@@ -927,11 +1069,13 @@ export default function Home() {
           : "She is used to collaborative environments (TMA, DMS, academic projects), communicates clearly, and bridges technical and business needs.",
     };
 
+    setRobotMood("🤖");
     setChatMessages((prev) => [...prev, { role: "user", text: prompts[topic] }]);
     launchEmojiBurst(["💬", "🤖"]);
     setIsTyping(true);
     window.setTimeout(() => {
       setChatMessages((prev) => [...prev, { role: "bot", text: answers[topic] }]);
+      setRobotMood(inferRobotMood(answers[topic]));
       setIsTyping(false);
       speakText(answers[topic]);
     }, 900);
@@ -1016,6 +1160,18 @@ export default function Home() {
       window.setTimeout(() => setMicListening(false), 0);
     }
   }, [lang]);
+  useEffect(() => {
+    if (ambientMusicOn) {
+      startAmbientMusic();
+    } else {
+      stopAmbientMusic();
+    }
+  }, [ambientMusicOn]);
+  useEffect(() => {
+    return () => {
+      stopAmbientMusic();
+    };
+  }, []);
 
   return (
     <div
@@ -1072,7 +1228,7 @@ export default function Home() {
                 <span className="robot-mouth" aria-hidden="true" />
               </div>
               <p className="robot-bubble">
-                {lang === "fr" ? "Bonjour, je suis GemiBot 🤖" : "Hello, I am GemiBot 🤖"}
+                {lang === "fr" ? `Bonjour, je suis GemiBot ${robotMood}` : `Hello, I am GemiBot ${robotMood}`}
               </p>
             </div>
             <div className="robot-full robot-center">
@@ -1088,7 +1244,7 @@ export default function Home() {
                 <span className="robot-mouth" aria-hidden="true" />
               </div>
               <p className="robot-bubble">
-                {lang === "fr" ? "Data et IA, version premium 🚀" : "Data and AI, premium edition 🚀"}
+                {lang === "fr" ? `Data et IA, version premium ${robotMood}` : `Data and AI, premium edition ${robotMood}`}
               </p>
             </div>
             <div className="robot-full robot-right">
@@ -1104,7 +1260,7 @@ export default function Home() {
                 <span className="robot-mouth" aria-hidden="true" />
               </div>
               <p className="robot-bubble">
-                {lang === "fr" ? "Je marche, je danse, je parle ✨" : "I walk, dance, and speak ✨"}
+                {lang === "fr" ? `Je marche, je danse, je parle ${robotMood}` : `I walk, dance, and speak ${robotMood}`}
               </p>
             </div>
           </div>
@@ -1192,6 +1348,16 @@ export default function Home() {
               >
                 {voiceEnabled ? t.voiceOn : t.voiceOff}
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setAmbientMusicOn((p) => !p);
+                  launchEmojiBurst(["🎵", "✨", "🤖"]);
+                }}
+                className="rounded-full border border-emerald-300/60 px-3 py-1 font-semibold text-emerald-200"
+              >
+                {ambientMusicOn ? t.bgMusicOn : t.bgMusicOff}
+              </button>
             </div>
           </div>
         </header>
@@ -1277,8 +1443,21 @@ export default function Home() {
 
         <section id="projects" className="mb-14">
           <h2 className="text-2xl font-semibold md:text-3xl">{t.projectsTitle}</h2>
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
+            <span className="rounded-full border border-white/20 px-3 py-1">{t.projectFilter}</span>
+            {projectCategoryOptions.map((cat) => (
+              <button
+                key={`project-filter-${cat}`}
+                type="button"
+                onClick={() => setSelectedProjectCategory(cat)}
+                className={`rounded-full border px-3 py-1 ${selectedProjectCategory === cat ? "border-cyan-300 bg-cyan-300/20 text-cyan-200" : "border-white/20"}`}
+              >
+                {categoryLabels[lang][cat]}
+              </button>
+            ))}
+          </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <article key={project.title} className={`rounded-2xl border p-6 ${card}`}>
                 <h3 className="text-lg font-semibold">{project.title}</h3>
                 <p className="mt-2 text-sm">{lang === "fr" ? project.fr : project.en}</p>
@@ -1360,8 +1539,21 @@ export default function Home() {
           <h4 className="mt-4 text-sm font-semibold text-cyan-300">
             {lang === "fr" ? "Videos de demonstration" : "Demo videos"}
           </h4>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+            <span className="rounded-full border border-white/20 px-3 py-1">{t.galleryFilter}</span>
+            {galleryCategoryOptions.map((cat) => (
+              <button
+                key={`gallery-filter-${cat}`}
+                type="button"
+                onClick={() => setSelectedGalleryCategory(cat)}
+                className={`rounded-full border px-3 py-1 ${selectedGalleryCategory === cat ? "border-violet-300 bg-violet-300/20 text-violet-200" : "border-white/20"}`}
+              >
+                {categoryLabels[lang][cat]}
+              </button>
+            ))}
+          </div>
           <div className="mt-3 grid gap-4 md:grid-cols-2">
-            {galleryVideos.map((item) => (
+            {filteredGalleryVideos.map((item) => (
               <article key={item.titleFr} className={`overflow-hidden rounded-2xl border p-4 ${card}`}>
                 <video
                   controls
@@ -1483,7 +1675,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold">{t.chatTitle} 💬</p>
-                  <p className="text-[10px] text-cyan-300">Online • AI Agent</p>
+                  <p className="text-[10px] text-cyan-300">Online • AI Agent • {t.robotMoodLabel}: {robotMood}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
