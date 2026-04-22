@@ -40,7 +40,7 @@ const copy = {
     availability: "Disponible pour stage en IA (avril-septembre 2026)",
     title: "Data & AI Engineer",
     subtitle:
-      "Role principal: Data & AI Engineer | S1 2025 en MSc 1 Data Engineering, puis S2 en MSc 1 AI (actuellement).",
+      "Role principal: Data & AI Engineer | S1 (sept-dec 2025) en MSc 1 Data Engineering, puis S2 (janv-avr 2026) en MSc 1 Artificial Intelligence - International English.",
     hero: "Je conçois des solutions IA/Data orientées impact métier: ETL/ELT, modélisation, automatisation intelligente, dashboards KPI, avec une base solide en réseaux/systèmes et développement web.",
     ctaProjects: "Voir mes projets",
     ctaContact: "Me contacter",
@@ -105,7 +105,7 @@ const copy = {
     availability: "Open to AI internships (Apr-Sep 2026)",
     title: "Data & AI Engineer",
     subtitle:
-      "Main role: Data & AI Engineer | Sem1 2025 in MSc 1 Data Engineering, then Sem2 in MSc 1 AI (current).",
+      "Main role: Data & AI Engineer | Sem1 (Sep-Dec 2025) in MSc 1 Data Engineering, then Sem2 (Jan-Apr 2026) in MSc 1 Artificial Intelligence - International English.",
     hero: "I design AI/Data solutions with business impact: ETL/ELT, modeling, intelligent automation, KPI dashboards, backed by networking/systems and web development foundations.",
     ctaProjects: "View projects",
     ctaContact: "Contact me",
@@ -169,7 +169,7 @@ const copy = {
 
 const education = [
   { period: "09/2025 - 12/2025", fr: "MSc 1 Data Engineering (S1)", en: "MSc 1 Data Engineering (Sem1)", school: "ECE Paris" },
-  { period: "01/2026 - actuel", fr: "MSc 1 Artificial Intelligence (S2)", en: "MSc 1 Artificial Intelligence (Sem2)", school: "ECE Paris" },
+  { period: "01/2026 - 04/2026", fr: "MSc 1 Artificial Intelligence - International English (S2)", en: "MSc 1 Artificial Intelligence - International English (Sem2)", school: "ECE Paris" },
   { period: "09/2022 - 06/2025", fr: "Bachelor Ingenierie Data & IA", en: "Bachelor Data & AI Engineering", school: "ECE Paris" },
   { period: "09/2021 - 06/2022", fr: "Ingenierie generaliste", en: "General Engineering", school: "EPF Troyes" },
   { period: "Baccalaureat obtenu", fr: "Baccalaureat scientifique", en: "Scientific baccalaureate", school: "France" },
@@ -196,7 +196,7 @@ const experiences = [
   },
   {
     period: "05/2024 - 11/2024",
-    company: "Datasift Consulting",
+    company: "Data Soft Consulting",
     roleFr: "Stagiaire consultante informatique",
     roleEn: "IT consulting intern",
     detailsFr: [
@@ -212,7 +212,7 @@ const experiences = [
   },
   {
     period: "07/2023 - 05/2024",
-    company: "Datasift Consulting",
+    company: "Data Soft Consulting",
     roleFr: "Stagiaire ingenierie informatique",
     roleEn: "Software engineering intern",
     detailsFr: [
@@ -416,8 +416,8 @@ const wixPages = [
   {
     title: "Stage et experiences",
     url: "https://gemimaondelepourou.wixsite.com/portfolio-de-gemima/stage-et-exp%C3%A9riences",
-    fr: "Missions Datasift (TMA, Java, CI/CD, serveurs, GED) et engagement citoyen Cop1.",
-    en: "Datasift missions (TMA, Java, CI/CD, servers, DMS) and Cop1 community engagement.",
+    fr: "Missions Data Soft Consulting (TMA, Java, CI/CD, serveurs, GED) et engagement citoyen Cop1.",
+    en: "Data Soft Consulting missions (TMA, Java, CI/CD, servers, DMS) and Cop1 community engagement.",
     detailsFr: [
       "Outils mentionnés: Jenkins, Ansible, Jira, JUnit, ELK, JBoss, Tomcat, PostgreSQL.",
       "Responsabilités: développement, base de données, déploiement et support.",
@@ -504,13 +504,13 @@ const trackBlurb = {
 
 const interviewEvidence = {
   fr: [
-    "Experience terrain: ENGIE Solutions + Datasift Consulting.",
+    "Experience terrain: ENGIE Solutions + Data Soft Consulting.",
     "Execution technique: ETL/ELT, automation Python/VBA/PowerShell, dashboards KPI.",
     "Polyvalence: AI Engineering, Data Engineering, Data Science.",
     "Ouverture multi-secteurs en Ile-de-France.",
   ],
   en: [
-    "Field experience: ENGIE Solutions + Datasift Consulting.",
+    "Field experience: ENGIE Solutions + Data Soft Consulting.",
     "Technical execution: ETL/ELT, Python/VBA/PowerShell automation, KPI dashboards.",
     "Versatility: AI Engineering, Data Engineering, Data Science.",
     "Open to multi-sector opportunities in Ile-de-France.",
@@ -629,8 +629,8 @@ export default function Home() {
     }
     if (isFollowUp && previousTopic === "experience") {
       return lang === "fr"
-        ? "Pour completer l'experience: ENGIE pour l'industrialisation data, Datasift pour le developpement applicatif, et Cop1 pour les soft skills terrain."
-        : "To complete experience: ENGIE for data industrialization, Datasift for application development, and Cop1 for strong field soft skills.";
+        ? "Pour completer l'experience: ENGIE pour l'industrialisation data, Data Soft Consulting pour le developpement applicatif, et Cop1 pour les soft skills terrain."
+        : "To complete experience: ENGIE for data industrialization, Data Soft Consulting for application development, and Cop1 for strong field soft skills.";
     }
 
     if (q.includes("bonjour") || q.includes("hello") || q.includes("salut")) {
@@ -671,13 +671,13 @@ export default function Home() {
     }
     if (q.includes("formation") || q.includes("education")) {
       return lang === "fr"
-        ? "Mon parcours: MSc AI actuel, MSc Data Engineering en 2025, Bachelor Data & IA, et baccalaureat scientifique obtenu."
-        : "My path: current MSc AI, MSc Data Engineering in 2025, Bachelor Data & AI, and a completed scientific baccalaureate.";
+        ? "Mon parcours: MSc 1 Data Engineering (sept-dec 2025), puis MSc 1 Artificial Intelligence - International English (janv-avr 2026), Bachelor Data & IA, et baccalaureat scientifique obtenu."
+        : "My path: MSc 1 Data Engineering (Sep-Dec 2025), then MSc 1 Artificial Intelligence - International English (Jan-Apr 2026), Bachelor Data & AI, and a completed scientific baccalaureate.";
     }
     if (q.includes("experience") || q.includes("expérience")) {
       return lang === "fr"
-        ? "Mes experiences principales sont ENGIE Solutions et Datasift Consulting, avec ETL/ELT, automatisation et dashboards KPI."
-        : "My key experiences are at ENGIE Solutions and Datasift Consulting, with ETL/ELT, automation, and KPI dashboards.";
+        ? "Mes experiences principales sont ENGIE Solutions et Data Soft Consulting, avec ETL/ELT, automatisation et dashboards KPI."
+        : "My key experiences are at ENGIE Solutions and Data Soft Consulting, with ETL/ELT, automation, and KPI dashboards.";
     }
     if (q.includes("cv") || q.includes("resume")) {
       return lang === "fr"
@@ -810,9 +810,10 @@ export default function Home() {
       return;
     }
     const normalized = text
-      .replace(/\bDatasift\b/gi, "Datassoft")
-      .replace(/\bDatasoft\b/gi, "Datassoft")
-      .replace(/\bDatazoft\b/gi, "Datassoft")
+      .replace(/\bDatasift\b/gi, "Data Soft")
+      .replace(/\bDatasoft\b/gi, "Data Soft")
+      .replace(/\bDatassoft\b/gi, "Data Soft")
+      .replace(/\bDatazoft\b/gi, "Data Soft")
       .replace(/\bIA\b/g, "I A")
       .replace(/\bAI\b/g, "A I")
       .replace(/\bETL\/ELT\b/g, "E T L, E L T")
@@ -914,8 +915,8 @@ export default function Home() {
           : "CATIA V5 project: mechanical part modeling with engineering constraints in an AI + engineering path.",
       "recruiter-why":
         lang === "fr"
-            ? "Parce qu'elle combine déjà expérience terrain (ENGIE, Datasift), bagage IA/Data actuel, et forte capacité d'exécution sur des sujets concrets."
-            : "Because she combines real field experience (ENGIE, Datasift), current AI/Data training, and strong execution on concrete use cases.",
+            ? "Parce qu'elle combine déjà expérience terrain (ENGIE, Data Soft Consulting), bagage IA/Data actuel, et forte capacité d'exécution sur des sujets concrets."
+            : "Because she combines real field experience (ENGIE, Data Soft Consulting), current AI/Data training, and strong execution on concrete use cases.",
       "recruiter-impact":
         lang === "fr"
           ? "Court terme: automatiser des flux data, fiabiliser des KPI, améliorer le pilotage opérationnel via dashboards et analyses prédictives."
