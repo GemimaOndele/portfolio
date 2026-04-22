@@ -207,7 +207,7 @@ const experiences = [
   },
   {
     period: "05/2024 - 11/2024",
-    company: "Data Soft Consulting",
+    company: "Datasoft Consulting",
     roleFr: "Stagiaire consultante informatique",
     roleEn: "IT consulting intern",
     detailsFr: [
@@ -223,7 +223,7 @@ const experiences = [
   },
   {
     period: "07/2023 - 05/2024",
-    company: "Data Soft Consulting",
+    company: "Datasoft Consulting",
     roleFr: "Stagiaire ingenierie informatique",
     roleEn: "Software engineering intern",
     detailsFr: [
@@ -436,8 +436,8 @@ const wixPages = [
   {
     title: "Stage et experiences",
     url: "https://gemimaondelepourou.wixsite.com/portfolio-de-gemima/stage-et-exp%C3%A9riences",
-    fr: "Missions Data Soft Consulting (TMA, Java, CI/CD, serveurs, GED) et engagement citoyen Cop1.",
-    en: "Data Soft Consulting missions (TMA, Java, CI/CD, servers, DMS) and Cop1 community engagement.",
+    fr: "Missions Datasoft Consulting (TMA, Java, CI/CD, serveurs, GED) et engagement citoyen Cop1.",
+    en: "Datasoft Consulting missions (TMA, Java, CI/CD, servers, DMS) and Cop1 community engagement.",
     detailsFr: [
       "Outils mentionnés: Jenkins, Ansible, Jira, JUnit, ELK, JBoss, Tomcat, PostgreSQL.",
       "Responsabilités: développement, base de données, déploiement et support.",
@@ -524,13 +524,13 @@ const trackBlurb = {
 
 const interviewEvidence = {
   fr: [
-    "Experience terrain: ENGIE Solutions + Data Soft Consulting.",
+    "Experience terrain: ENGIE Solutions + Datasoft Consulting.",
     "Execution technique: ETL/ELT, automation Python/VBA/PowerShell, dashboards KPI.",
     "Polyvalence: AI Engineering, Data Engineering, Data Science.",
     "Ouverture multi-secteurs en Ile-de-France.",
   ],
   en: [
-    "Field experience: ENGIE Solutions + Data Soft Consulting.",
+    "Field experience: ENGIE Solutions + Datasoft Consulting.",
     "Technical execution: ETL/ELT, Python/VBA/PowerShell automation, KPI dashboards.",
     "Versatility: AI Engineering, Data Engineering, Data Science.",
     "Open to multi-sector opportunities in Ile-de-France.",
@@ -768,8 +768,8 @@ export default function Home() {
     }
     if (isFollowUp && previousTopic === "experience") {
       return lang === "fr"
-        ? "Pour completer l'experience: ENGIE pour l'industrialisation data, Data Soft Consulting pour le developpement applicatif, et Cop1 pour les soft skills terrain."
-        : "To complete experience: ENGIE for data industrialization, Data Soft Consulting for application development, and Cop1 for strong field soft skills.";
+        ? "Pour completer l'experience: ENGIE pour l'industrialisation data, Datasoft Consulting pour le developpement applicatif, et Cop1 pour les soft skills terrain."
+        : "To complete experience: ENGIE for data industrialization, Datasoft Consulting for application development, and Cop1 for strong field soft skills.";
     }
 
     if (q.includes("bonjour") || q.includes("hello") || q.includes("salut")) {
@@ -815,8 +815,8 @@ export default function Home() {
     }
     if (q.includes("experience") || q.includes("expérience")) {
       return lang === "fr"
-        ? "Mes experiences principales sont ENGIE Solutions et Data Soft Consulting, avec ETL/ELT, automatisation et dashboards KPI."
-        : "My key experiences are at ENGIE Solutions and Data Soft Consulting, with ETL/ELT, automation, and KPI dashboards.";
+        ? "Mes experiences principales sont ENGIE Solutions et Datasoft Consulting, avec ETL/ELT, automatisation et dashboards KPI."
+        : "My key experiences are at ENGIE Solutions and Datasoft Consulting, with ETL/ELT, automation, and KPI dashboards.";
     }
     if (q.includes("cv") || q.includes("resume")) {
       return lang === "fr"
@@ -1057,8 +1057,8 @@ export default function Home() {
           : "CATIA V5 project: mechanical part modeling with engineering constraints in an AI + engineering path.",
       "recruiter-why":
         lang === "fr"
-            ? "Parce qu'elle combine déjà expérience terrain (ENGIE, Data Soft Consulting), bagage IA/Data actuel, et forte capacité d'exécution sur des sujets concrets."
-            : "Because she combines real field experience (ENGIE, Data Soft Consulting), current AI/Data training, and strong execution on concrete use cases.",
+            ? "Parce qu'elle combine déjà expérience terrain (ENGIE, Datasoft Consulting), bagage IA/Data actuel, et forte capacité d'exécution sur des sujets concrets."
+            : "Because she combines real field experience (ENGIE, Datasoft Consulting), current AI/Data training, and strong execution on concrete use cases.",
       "recruiter-impact":
         lang === "fr"
           ? "Court terme: automatiser des flux data, fiabiliser des KPI, améliorer le pilotage opérationnel via dashboards et analyses prédictives."
@@ -1226,6 +1226,7 @@ export default function Home() {
                   priority
                 />
                 <span className="robot-mouth" aria-hidden="true" />
+                <span className="robot-expression" aria-hidden="true">{robotMood}</span>
               </div>
               <p className="robot-bubble">
                 {lang === "fr" ? `Bonjour, je suis GemiBot ${robotMood}` : `Hello, I am GemiBot ${robotMood}`}
@@ -1242,6 +1243,7 @@ export default function Home() {
                   loading="eager"
                 />
                 <span className="robot-mouth" aria-hidden="true" />
+                <span className="robot-expression" aria-hidden="true">{robotMood}</span>
               </div>
               <p className="robot-bubble">
                 {lang === "fr" ? `Data et IA, version premium ${robotMood}` : `Data and AI, premium edition ${robotMood}`}
@@ -1258,6 +1260,7 @@ export default function Home() {
                   loading="eager"
                 />
                 <span className="robot-mouth" aria-hidden="true" />
+                <span className="robot-expression" aria-hidden="true">{robotMood}</span>
               </div>
               <p className="robot-bubble">
                 {lang === "fr" ? `Je marche, je danse, je parle ${robotMood}` : `I walk, dance, and speak ${robotMood}`}
@@ -1672,6 +1675,7 @@ export default function Home() {
                 <div className={`robot-mini ${botSpeaking || isTyping || micListening ? "robot-mini-speaking" : ""}`}>
                   <Image src="/robot-ai.svg" alt="Avatar GemiBot" width={42} height={42} className="animate-float" />
                   <span className="robot-mini-mouth" aria-hidden="true" />
+                  <span className="robot-mini-expression" aria-hidden="true">{robotMood}</span>
                 </div>
                 <div>
                   <p className="text-sm font-semibold">{t.chatTitle} 💬</p>

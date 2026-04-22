@@ -324,6 +324,16 @@ body {
   animation: robotTalkMouth 0.22s ease-in-out infinite;
 }
 
+.robot-expression {
+  position: absolute;
+  left: 50%;
+  top: 21%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+  animation: robotTalk 1.25s ease-in-out infinite;
+}
+
 .robot-bubble {
   border: 1px solid rgba(34, 211, 238, 0.45);
   border-radius: 999px;
@@ -390,6 +400,14 @@ body {
 
 .robot-mini-speaking .robot-mini-mouth {
   animation: robotTalkMouth 0.22s ease-in-out infinite;
+}
+
+.robot-mini-expression {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  font-size: 14px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
 }
 
 @media (prefers-reduced-motion: reduce) {
