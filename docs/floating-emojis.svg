@@ -16,31 +16,31 @@
   <circle cx="820" cy="160" r="120" fill="url(#glow)"/>
 
   <text x="50%" y="44%" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
-    3D Creative Vibe - Data - AI - DevOps
+    3D Creative Vibe " Data " AI " DevOps
   </text>
   <text x="50%" y="63%" text-anchor="middle" dominant-baseline="middle" fill="#bfdbfe" font-size="18" font-family="Segoe UI, Arial, sans-serif">
     Floating emoji atmosphere for a modern GitHub profile
   </text>
 
-  <text x="140" y="170" font-size="34">&#128640;
+  <text x="140" y="170" font-size="34">=€
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -20; 0 0" dur="3.4s" repeatCount="indefinite"/>
   </text>
-  <text x="250" y="145" font-size="30">&#129302;
+  <text x="250" y="145" font-size="30">>
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -16; 0 0" dur="2.8s" repeatCount="indefinite"/>
   </text>
-  <text x="360" y="180" font-size="28">&#9889;
+  <text x="360" y="180" font-size="28">¡
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -15; 0 0" dur="2.5s" repeatCount="indefinite"/>
   </text>
-  <text x="490" y="150" font-size="28">&#128202;
+  <text x="490" y="150" font-size="28">=Ê
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -14; 0 0" dur="3.1s" repeatCount="indefinite"/>
   </text>
-  <text x="610" y="174" font-size="30">&#129504;
+  <text x="610" y="174" font-size="30">>à
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -18; 0 0" dur="2.9s" repeatCount="indefinite"/>
   </text>
-  <text x="730" y="152" font-size="30">&#127757;
+  <text x="730" y="152" font-size="30"><
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -16; 0 0" dur="3.2s" repeatCount="indefinite"/>
   </text>
-  <text x="840" y="176" font-size="32">&#10024;
+  <text x="840" y="176" font-size="32">(
     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -20; 0 0" dur="2.7s" repeatCount="indefinite"/>
   </text>
 </svg>
