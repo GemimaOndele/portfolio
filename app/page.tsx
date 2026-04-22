@@ -36,7 +36,7 @@ declare global {
 
 const copy = {
   fr: {
-    nav: ["A propos", "Formation", "Experience", "Projets", "Achievements", "Dashboard", "Competences", "Vision", "Contact"],
+    nav: ["A propos", "Formation", "Experience", "Projets", "Achievements", "Competences", "Vision", "Contact"],
     availability: "Disponible pour stage en IA (avril-septembre 2026)",
     title: "Data & AI Engineer",
     subtitle:
@@ -51,7 +51,6 @@ const copy = {
     experienceTitle: "Experience",
     projectsTitle: "Projets 🚀",
     achievementsTitle: "Achievements mesurables 📊",
-    dashboardTitle: "Dashboard IA/Data 📈",
     skillsTitle: "Competences (par niveau)",
     visionTitle: "Vision - IA, robotique et impact multi-secteurs ✨",
     galleryTitle: "Galerie projets (visuels Wix) 🖼️",
@@ -102,7 +101,7 @@ const copy = {
     voiceAuto: "Auto (meilleure)",
   },
   en: {
-    nav: ["About", "Education", "Experience", "Projects", "Achievements", "Dashboard", "Skills", "Vision", "Contact"],
+    nav: ["About", "Education", "Experience", "Projects", "Achievements", "Skills", "Vision", "Contact"],
     availability: "Open to AI internships (Apr-Sep 2026)",
     title: "Data & AI Engineer",
     subtitle:
@@ -117,7 +116,6 @@ const copy = {
     experienceTitle: "Experience",
     projectsTitle: "Projects 🚀",
     achievementsTitle: "Measurable achievements 📊",
-    dashboardTitle: "AI/Data dashboard 📈",
     skillsTitle: "Skills (by level)",
     visionTitle: "Vision - AI, robotics, and multi-sector impact ✨",
     galleryTitle: "Project gallery (Wix visuals) 🖼️",
@@ -1147,10 +1145,9 @@ export default function Home() {
               <a href="#experience">{t.nav[2]}</a>
               <a href="#projects">{t.nav[3]}</a>
               <a href="#achievements">{t.nav[4]}</a>
-              <a href="#dashboard">{t.nav[5]}</a>
-              <a href="#skills">{t.nav[6]}</a>
-              <a href="#vision">{t.nav[7]}</a>
-              <a href="#contact">{t.nav[8]}</a>
+              <a href="#skills">{t.nav[5]}</a>
+              <a href="#vision">{t.nav[6]}</a>
+              <a href="#contact">{t.nav[7]}</a>
             </nav>
             <div className="flex items-center gap-2">
               <div className="inline-flex items-center overflow-hidden rounded-full border border-white/30">
@@ -1319,39 +1316,6 @@ export default function Home() {
                 <p className="mt-2 text-sm">{lang === "fr" ? a.fr : a.en}</p>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section id="dashboard" className="mb-14">
-          <h2 className="text-2xl font-semibold md:text-3xl">{t.dashboardTitle}</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {dashboardData.cards.map((item) => (
-              <article key={item.key} className={`rounded-2xl border p-5 ${card}`}>
-                <p className="text-3xl font-bold text-fuchsia-300">{item.value}</p>
-                <p className="mt-2 text-sm">{lang === "fr" ? item.fr : item.en}</p>
-              </article>
-            ))}
-          </div>
-          <div className={`mt-5 rounded-2xl border p-5 ${card}`}>
-            <h3 className="text-sm font-semibold text-cyan-300">
-              {lang === "fr" ? "Repartition des projets par categorie" : "Project distribution by category"}
-            </h3>
-            <div className="mt-3 space-y-3">
-              {dashboardData.projectCountByCategory.map((row) => {
-                const pct = Math.max(6, Math.round((row.total / dashboardData.maxProjects) * 100));
-                return (
-                  <div key={`dashboard-cat-${row.category}`}>
-                    <div className="mb-1 flex items-center justify-between text-xs">
-                      <span>{categoryLabels[lang][row.category]}</span>
-                      <span className="font-semibold text-cyan-300">{row.total}</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-white/10">
-                      <div className="h-2 rounded-full bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300" style={{ width: `${pct}%` }} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </section>
 
